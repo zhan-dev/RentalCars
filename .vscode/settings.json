@@ -1,0 +1,12 @@
+{
+    "al.defaultLaunchConfigurationName": "Deploy",
+    "CRS.FileNamePattern": "<ObjectTypeShort><ObjectId>.<ObjectNameShort>.al",
+    "CRS.FileNamePatternExtensions": "<ObjectTypeShort><ObjectId>.<ObjectNameShort>.al",
+    "CRS.FileNamePatternPageCustomizations": "<ObjectTypeShort><ObjectId>.<ObjectNameShort>.al",
+    "CRS.AlSubFolderName": "None",
+    "CRS.OnSaveAlFileAction": "Rename",
+    "CRS.ObjectNamePrefix": "RCars ", //your prefix
+    "CRS.ObjectNameSuffix": "",
+    "CRS.RemoveSuffixFromFilename": false,
+    "CRS.RemovePrefixFromFilename": false
+}

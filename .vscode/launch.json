@@ -1,0 +1,20 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Microsoft cloud sandbox",
+      "request": "launch",
+      "type": "al",
+      "environmentType": "Sandbox",
+      "environmentName": "RentalCarsSandbox",
+      "startupObjectId": 22,
+      "startupObjectType": "Page",
+      "breakOnError": true,
+      "launchBrowser": true,
+      "enableLongRunningSqlStatements": true,
+      "enableSqlInformationDebugger": true,
+      "tenant":"024e7f72-611c-4d39-a4a0-68a157acfc93",
+      "schemaUpdateMode": "ForceSync"
+    }
+  ]
+}
