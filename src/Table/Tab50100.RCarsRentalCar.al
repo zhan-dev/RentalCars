@@ -1,7 +1,7 @@
 table 50100 "RCars Rental Car"
 {
     Caption = 'Rental Car';
-    DataClassification = ToBeClassified;
+    DataClassification = CustomerContent;
 
     fields
     {
@@ -9,6 +9,18 @@ table 50100 "RCars Rental Car"
         {
             Caption = 'No.';
             DataClassification = CustomerContent;
+
+            trigger OnValidate()
+            var
+                RentalCarSetup: Record "RCars Rental Car Setup";
+                NoSeriesMgt: Codeunit NoSeriesManagement;
+            begin
+                if "No." <> xRec."No." then begin
+                    TestNoSeries(RentalCarSetup);
+                    NoSeriesMgt.TestManual(RentalCarSetup."Rental Car Nos.");
+                    "No. Series" := '';
+                end;
+            end;
         }
         field(10; "Car Model"; Text[20])
         {
@@ -30,6 +42,12 @@ table 50100 "RCars Rental Car"
             Caption = 'Was Crash';
             DataClassification = CustomerContent;
         }
+        field(140; "No. Series"; Code[20])
+        {
+            Caption = 'No. Series';
+            Editable = false;
+            TableRelation = "No. Series";
+        }
     }
     keys
     {
@@ -38,5 +56,31 @@ table 50100 "RCars Rental Car"
             Clustered = true;
         }
     }
+
+    trigger OnInsert()
+    begin
+        InitInsert();
+    end;
+
+    local procedure InitInsert()
+    var
+        RentalCarSetup: Record "RCars Rental Car Setup";
+        NoSeriesMgt: Codeunit NoSeriesManagement;
+    begin
+        if "No." <> '' then
+            exit;
+
+        TestNoSeries(RentalCarSetup);
+        NoSeriesMgt.InitSeries(RentalCarSetup."Rental Car Nos.", xRec."No. Series", 0D, "No.", "No. Series");
+    end;
+
+    local procedure TestNoSeries(var RentalCarSetup: Record "RCars Rental Car Setup")
+    begin
+        if not RentalCarSetup.Get() then begin
+            RentalCarSetup.Insert();
+            Commit();
+        end;
+        RentalCarSetup.TestField("Rental Car Nos.");
+    end;
 
 }
