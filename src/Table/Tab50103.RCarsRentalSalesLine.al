@@ -9,6 +9,7 @@ table 50103 "RCars Rental Sales Line"
         {
             Caption = 'Line No.';
             DataClassification = CustomerContent;
+            TableRelation = "RCars Rental Sales Header"."Doc. No."; //выпадающий список ключа, что бы можно было создать кучу пустых строк в списке
         }
         field(20; "Item No."; Code[20])
         {
@@ -20,10 +21,15 @@ table 50103 "RCars Rental Sales Line"
             Caption = 'Name';
             DataClassification = CustomerContent;
         }
+        field(100; "My Line No."; Integer)
+        {
+            Caption = 'My Line No.';
+            DataClassification = CustomerContent;
+        }
     }
     keys
     {
-        key(PK; "Line No.", "Item No.")
+        key(PK; "Line No.", "My Line No.")
         {
             Clustered = true;
         }
