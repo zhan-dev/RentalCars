@@ -7,7 +7,7 @@
       "type": "al",
       "environmentType": "Sandbox",
       "environmentName": "RentalCarsSandbox",
-      "startupObjectId": 50100,
+      "startupObjectId": 50103,
       "startupObjectType": "Page",
       "breakOnError": true,
       "launchBrowser": true,

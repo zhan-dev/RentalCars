@@ -7,8 +7,8 @@ page 50100 "RCars Rental Car List"
     SourceTable = "RCars Rental Car";
     UsageCategory = Lists;
 
-    CardPageId = "RCars Rental Car Card";
-    Editable = false;
+    CardPageId = "RCars Rental Car Card"; //ссылка  на карточку 
+    Editable = false; // запрет редактирования
 
     layout
     {

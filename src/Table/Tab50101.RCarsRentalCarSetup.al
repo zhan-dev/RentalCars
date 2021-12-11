@@ -1,4 +1,4 @@
-table 50103 "RCars Rental Car Setup"
+table 50101 "RCars Rental Car Setup"  // доп. таблица для авто генерации ключа (связующая)
 {
     Caption = 'Rental Car Setup';
     DataClassification = CustomerContent;

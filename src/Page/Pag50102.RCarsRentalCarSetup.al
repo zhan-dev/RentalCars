@@ -1,4 +1,4 @@
-page 50103 "RCars Rental Car Setup"
+page 50102 "RCars Rental Car Setup" //доп. таблица для авто генерации ключа
 {
 
     Caption = 'RCars Rental Car Setup';

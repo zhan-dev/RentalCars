@@ -5,7 +5,7 @@ table 50100 "RCars Rental Car"
 
     fields
     {
-        field(1; "No."; Code[20])
+        field(10; "No."; Code[20])
         {
             Caption = 'No.';
             DataClassification = CustomerContent;
@@ -22,27 +22,27 @@ table 50100 "RCars Rental Car"
                 end;
             end;
         }
-        field(10; "Car Model"; Text[20])
+        field(20; "Car Model"; Text[20])
         {
             Caption = 'Car Model';
             DataClassification = CustomerContent;
         }
-        field(20; "Car Color"; enum "RCars Car Color")
+        field(30; "Car Color"; enum "RCars Car Color")
         {
             Caption = 'Car Color';
             DataClassification = CustomerContent;
         }
-        field(30; Year; Integer)
+        field(40; Year; Integer)
         {
             Caption = 'Year';
             DataClassification = CustomerContent;
         }
-        field(40; "Was Crash"; Boolean)
+        field(50; "Was Crash"; Boolean)
         {
             Caption = 'Was Crash';
             DataClassification = CustomerContent;
         }
-        field(140; "No. Series"; Code[20])
+        field(200; "No. Series"; Code[20])
         {
             Caption = 'No. Series';
             Editable = false;
