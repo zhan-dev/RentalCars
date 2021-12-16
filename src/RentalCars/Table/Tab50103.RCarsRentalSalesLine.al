@@ -9,7 +9,7 @@ table 50103 "RCars Rental Sales Line"
         {
             Caption = 'Line No.';
             DataClassification = CustomerContent;
-            TableRelation = "RCars Rental Sales Header"."Doc. No."; //выпадающий список ключа, что бы можно было создать кучу пустых строк в списке
+            TableRelation = "RCars Rental Sales Header"."Doc. No."; //автозамена ключа в доп. таблице при смене ключа в основной без потери данных
         }
         field(20; "Item No."; Code[20])
         {
@@ -21,7 +21,7 @@ table 50103 "RCars Rental Sales Line"
             Caption = 'Name';
             DataClassification = CustomerContent;
         }
-        field(100; "My Line No."; Integer)
+        field(100; "My Line No."; Integer) //для работы autosplitkey
         {
             Caption = 'My Line No.';
             DataClassification = CustomerContent;

@@ -1,13 +1,13 @@
-table 50100 "RCars Rental Car"
+table 50102 "RCars Rental Sales Header"
 {
-    Caption = 'Rental Car';
-    DataClassification = CustomerContent;
+    Caption = 'Rental Sales Header';
+    DataClassification = ToBeClassified;
 
     fields
     {
-        field(10; "No."; Code[20])
+        field(10; "Doc. No."; Code[20])
         {
-            Caption = 'No.';
+            Caption = 'Doc. No.';
             DataClassification = CustomerContent;
 
             trigger OnValidate()
@@ -15,31 +15,21 @@ table 50100 "RCars Rental Car"
                 RentalCarSetup: Record "RCars Rental Car Setup";
                 NoSeriesMgt: Codeunit NoSeriesManagement;
             begin
-                if "No." <> xRec."No." then begin
+                if "Doc. No." <> xRec."Doc. No." then begin
                     TestNoSeries(RentalCarSetup);
                     NoSeriesMgt.TestManual(RentalCarSetup."Rental Car Nos.");
                     "No. Series" := '';
                 end;
             end;
         }
-        field(20; "Car Model"; Text[20])
+        field(20; "Salesperson No."; Code[20])
         {
-            Caption = 'Car Model';
+            Caption = 'Salesperson No.';
             DataClassification = CustomerContent;
         }
-        field(30; "Car Color"; enum "RCars Car Color")
+        field(30; "Customer No."; Code[20])
         {
-            Caption = 'Car Color';
-            DataClassification = CustomerContent;
-        }
-        field(40; Year; Integer)
-        {
-            Caption = 'Year';
-            DataClassification = CustomerContent;
-        }
-        field(50; "Was Crash"; Boolean)
-        {
-            Caption = 'Was Crash';
+            Caption = 'Customer No.';
             DataClassification = CustomerContent;
         }
         field(200; "No. Series"; Code[20])
@@ -51,7 +41,7 @@ table 50100 "RCars Rental Car"
     }
     keys
     {
-        key(PK; "No.")
+        key(PK; "Doc. No.")
         {
             Clustered = true;
         }
@@ -64,14 +54,14 @@ table 50100 "RCars Rental Car"
 
     local procedure InitInsert()
     var
-        RentalCarSetup: Record "RCars Rental Car Setup";
+        RCarsRentalCarSetup: Record "RCars Rental Car Setup";
         NoSeriesMgt: Codeunit NoSeriesManagement;
     begin
-        if "No." <> '' then
+        if "Doc. No." <> '' then
             exit;
 
-        TestNoSeries(RentalCarSetup);
-        NoSeriesMgt.InitSeries(RentalCarSetup."Rental Car Nos.", xRec."No. Series", 0D, "No.", "No. Series");
+        TestNoSeries(RCarsRentalCarSetup);
+        NoSeriesMgt.InitSeries(RCarsRentalCarSetup."Rental Car Nos.", xRec."No. Series", 0D, "Doc. No.", "No. Series");
     end;
 
     local procedure TestNoSeries(var RentalCarSetup: Record "RCars Rental Car Setup")
@@ -81,6 +71,14 @@ table 50100 "RCars Rental Car"
             Commit();
         end;
         RentalCarSetup.TestField("Rental Car Nos.");
+    end;
+
+    //процедура на удаление записи из таблицы заказа, и связанной с ней таблицы одновременно
+    trigger OnDelete()
+    var
+        RCarsRentalCarsMgt: Codeunit "RCars Rental Cars Mgt.";
+    begin
+        RCarsRentalCarsMgt.DeleteRCarsRentalSalesLine(Rec."Doc. No.");
     end;
 
 }

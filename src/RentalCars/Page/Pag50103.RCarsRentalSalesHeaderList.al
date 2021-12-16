@@ -7,8 +7,8 @@ page 50103 "RCars Rental Sales Header List"
     SourceTable = "RCars Rental Sales Header";
     UsageCategory = Lists;
 
-    CardPageId = "RCars Rental Sales Header Card";
-    Editable = false;
+    CardPageId = "RCars Rental Sales Header Card"; //ссылка  на карточку 
+    Editable = false; // запрет редактирования
 
     layout
     {

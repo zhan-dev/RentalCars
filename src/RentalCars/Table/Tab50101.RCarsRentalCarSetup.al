@@ -5,7 +5,7 @@ table 50101 "RCars Rental Car Setup"  // доп. таблица для авто 
 
     fields
     {
-        field(1; "Code"; Code[10])
+        field(1; "Code"; Code[20])
         {
             Caption = 'Code';
             DataClassification = CustomerContent;
