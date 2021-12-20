@@ -2,11 +2,6 @@ tableextension 50102 "RCars Rental Car Item" extends Item
 {
     fields
     {
-        field(50100; "RCars Item No."; Code[20])
-        {
-            Caption = 'Item No.';
-            DataClassification = CustomerContent;
-        }
         field(50110; "RCars Name"; Text[50])
         {
             Caption = 'Name';

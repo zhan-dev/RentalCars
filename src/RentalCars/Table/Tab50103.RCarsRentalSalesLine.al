@@ -15,37 +15,38 @@ table 50103 "RCars Rental Sales Line"
         {
             Caption = 'Item No.';
             DataClassification = CustomerContent;
+            TableRelation = Item."No.";
         }
         field(30; "RCars Name"; Text[50])
         {
             Caption = 'Name';
             DataClassification = CustomerContent;
-            TableRelation = item."RCars Name";
+            // TableRelation = item."RCars Name";
             // TableRelation = item."RCars Name" where(Type = const(Rental));*****************
         }
         field(40; "RCars Discount"; Decimal)
         {
             Caption = 'Discount';
             DataClassification = CustomerContent;
-            TableRelation = item."RCars Discount";
+            // TableRelation = item."RCars Discount";
         }
         field(50; "RCars Car Model"; Text[20])
         {
             Caption = 'Car Model';
             DataClassification = CustomerContent;
-            TableRelation = item."RCars Car Model";
+            // TableRelation = item."RCars Car Model";
         }
         field(60; "RCars Car Color"; Enum "RCars Car Color")
         {
             Caption = 'Car Color';
             DataClassification = CustomerContent;
-            TableRelation = item."RCars Car Color";
+            // TableRelation = item."RCars Car Color";
         }
         field(70; "RCars Year"; Integer)
         {
             Caption = 'Year';
             DataClassification = CustomerContent;
-            TableRelation = item."RCars Year";
+            // TableRelation = item."RCars Year";
         }
         field(80; "Start Date"; Date)
         {
