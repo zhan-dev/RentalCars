@@ -10,6 +10,11 @@ pageextension 50100 "RCars Rental Car Item List" extends "Item List"
                 ApplicationArea = All;
                 ToolTip = 'Specifies the value of the Name field.';
             }
+            field("RCars Discount"; Rec."RCars Discount")
+            {
+                ToolTip = 'Specifies the value of the Discount field.';
+                ApplicationArea = All;
+            }
             field("RCars Car Model"; Rec."RCars Car Model")
             {
                 ApplicationArea = All;

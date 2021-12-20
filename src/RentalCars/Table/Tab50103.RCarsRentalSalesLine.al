@@ -16,6 +16,11 @@ table 50103 "RCars Rental Sales Line"
             Caption = 'Item No.';
             DataClassification = CustomerContent;
             TableRelation = Item."No.";
+
+            trigger OnValidate()
+            begin
+                SetDiscount();
+            end;
         }
         field(30; "RCars Name"; Text[50])
         {
@@ -92,6 +97,19 @@ table 50103 "RCars Rental Sales Line"
     local procedure UseCarDays()
     begin
         "Use Car Days" := ("End Date" - "Start Date");
+    end;
+
+
+
+    //процедура добавления скидки
+    local procedure SetDiscount()
+    var
+        Item: Record Item;
+    begin
+        if Rec."Item No." <> '' then
+            Item.get();
+
+        Rec."RCars Discount" := Item."RCars Discount";
     end;
 
 }
