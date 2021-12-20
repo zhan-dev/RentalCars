@@ -4,7 +4,7 @@ pageextension 50101 "RCars Rental Car Item Card" extends "Item Card"
     {
         addafter(Item)
         {
-            group("RCars Cars")
+            group("RCars Rental")
             {
                 field("RCars Name"; Rec."RCars Name")
                 {

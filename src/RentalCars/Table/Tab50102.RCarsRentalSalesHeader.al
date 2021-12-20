@@ -26,11 +26,13 @@ table 50102 "RCars Rental Sales Header"
         {
             Caption = 'Salesperson No.';
             DataClassification = CustomerContent;
+            TableRelation = "Salesperson/Purchaser".Code;
         }
         field(30; "Customer No."; Code[20])
         {
             Caption = 'Customer No.';
             DataClassification = CustomerContent;
+            TableRelation = Customer."No.";
         }
         field(200; "No. Series"; Code[20])
         {

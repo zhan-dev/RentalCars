@@ -21,6 +21,7 @@ table 50103 "RCars Rental Sales Line"
             Caption = 'Name';
             DataClassification = CustomerContent;
             TableRelation = item."RCars Name";
+            // TableRelation = item."RCars Name" where(Type = const(Rental));*****************
         }
         field(40; "RCars Discount"; Decimal)
         {
