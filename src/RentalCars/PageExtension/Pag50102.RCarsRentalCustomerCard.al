@@ -4,7 +4,6 @@ pageextension 50102 "RCars Rental Customer Card" extends "Customer Card" //21
     {
         addafter(General)
         {
-
             group("RCars Rental")
             {
                 Caption = 'RCars Rental';

@@ -17,6 +17,7 @@ table 50103 "RCars Rental Sales Line"
             DataClassification = CustomerContent;
             TableRelation = Item."No.";
 
+            //скидка
             trigger OnValidate()
             begin
                 SetDiscount();
@@ -26,39 +27,45 @@ table 50103 "RCars Rental Sales Line"
         {
             Caption = 'Name';
             DataClassification = CustomerContent;
-            // TableRelation = item."RCars Name";
+            TableRelation = item."RCars Name";
             // TableRelation = item."RCars Name" where(Type = const(Rental));*****************
         }
         field(40; "RCars Discount"; Decimal)
         {
             Caption = 'Discount';
             DataClassification = CustomerContent;
-            // TableRelation = item."RCars Discount";
+            TableRelation = item."RCars Discount";
         }
         field(50; "RCars Car Model"; Text[20])
         {
             Caption = 'Car Model';
             DataClassification = CustomerContent;
-            // TableRelation = item."RCars Car Model";
+            TableRelation = item."RCars Car Model";
         }
         field(60; "RCars Car Color"; Enum "RCars Car Color")
         {
             Caption = 'Car Color';
             DataClassification = CustomerContent;
-            // TableRelation = item."RCars Car Color";
+            TableRelation = item."RCars Car Color";
         }
         field(70; "RCars Year"; Integer)
         {
             Caption = 'Year';
             DataClassification = CustomerContent;
-            // TableRelation = item."RCars Year";
+            TableRelation = item."RCars Year";
         }
-        field(80; "Start Date"; Date)
+        field(80; "RCars Was Crash"; Text[50])
+        {
+            Caption = 'Was Crashed';
+            DataClassification = CustomerContent;
+            TableRelation = item."RCars Was Crash";
+        }
+        field(90; "Start Date"; Date)
         {
             Caption = 'Start  Date';
             DataClassification = CustomerContent;
         }
-        field(90; "End Date"; Date)
+        field(100; "End Date"; Date)
         {
             Caption = 'End  Date';
             DataClassification = CustomerContent;
@@ -74,7 +81,7 @@ table 50103 "RCars Rental Sales Line"
             end;
 
         }
-        field(100; "Use Car Days"; Integer)
+        field(110; "Use Car Days"; Integer)
         {
             Caption = 'Use Car Days';
             DataClassification = CustomerContent;
@@ -94,6 +101,8 @@ table 50103 "RCars Rental Sales Line"
             Clustered = true;
         }
     }
+
+    //разница дат для заказа
     local procedure UseCarDays()
     begin
         "Use Car Days" := ("End Date" - "Start Date");

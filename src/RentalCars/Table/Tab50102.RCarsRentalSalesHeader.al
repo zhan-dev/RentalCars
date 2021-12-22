@@ -49,6 +49,7 @@ table 50102 "RCars Rental Sales Header"
         }
     }
 
+    //No Series
     trigger OnInsert()
     begin
         InitInsert();

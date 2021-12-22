@@ -7,21 +7,15 @@ tableextension 50103 "Rental Car/Customer Discount " extends "Price List Line"
             Caption = 'Code';
             DataClassification = CustomerContent;
         }
-        field(50110; "RCars Type"; Option)
+        field(50110; "RCars Type"; Enum "RCars Type")
         {
             Caption = 'Type';
             DataClassification = CustomerContent;
-            OptionMembers = Customer,Car;
         }
         field(50120; "RCars Value"; Decimal)
         {
             Caption = 'Value';
             DataClassification = CustomerContent;
-
-            // TableRelation =
-            // if ("RCars Type" = const(Customer))
-            // else
-            // if ("RCars Type" = const(Car))
         }
     }
 }

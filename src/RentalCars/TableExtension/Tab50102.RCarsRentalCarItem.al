@@ -11,6 +11,7 @@ tableextension 50102 "RCars Rental Car Item" extends Item
         {
             Caption = 'Discount';
             DataClassification = CustomerContent;
+            TableRelation = "Price list line"."RCars Code" where("RCars Type" = const(Customer));
         }
         field(50130; "RCars Car Model"; Text[20])
         {
