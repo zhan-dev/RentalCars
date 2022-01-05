@@ -2,18 +2,20 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Microsoft cloud sandbox",
+      "name": "Your own server",
       "request": "launch",
       "type": "al",
-      "environmentType": "Sandbox",
-      "environmentName": "RCarsSD",
-      "startupObjectId": 50000,
+      "environmentType": "OnPrem",
+      "server": "http://MyProj",
+      "serverInstance": "BC",
+      "authentication": "UserPassword",
+      "startupObjectId": 50103,
       "startupObjectType": "Page",
       "breakOnError": true,
       "launchBrowser": true,
       "enableLongRunningSqlStatements": true,
       "enableSqlInformationDebugger": true,
-      "tenant":"3e138102-07be-4f78-982e-7b60457c7827",
+      "tenant": "default",
       "schemaUpdateMode": "ForceSync"
     }
   ]
