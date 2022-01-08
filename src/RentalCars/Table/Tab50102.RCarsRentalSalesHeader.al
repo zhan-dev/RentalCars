@@ -49,7 +49,7 @@ table 50102 "RCars Rental Sales Header"
         }
     }
 
-    //No Series
+    //No Series ключ
     trigger OnInsert()
     begin
         InitInsert();

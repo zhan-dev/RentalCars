@@ -11,11 +11,6 @@ pageextension 50101 "RCars Rental Car Item Card" extends "Item Card"
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Name field.';
                 }
-                field("RCars Discount"; Rec."RCars Discount")
-                {
-                    ToolTip = 'Specifies the value of the Discount field.';
-                    ApplicationArea = All;
-                }
                 field("RCars Car Model"; Rec."RCars Car Model")
                 {
                     ApplicationArea = All;
@@ -35,6 +30,11 @@ pageextension 50101 "RCars Rental Car Item Card" extends "Item Card"
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Was Crash field.';
+                }
+                field("RCars Discount"; Rec."RCars Discount")
+                {
+                    ToolTip = 'Specifies the value of the Discount field.';
+                    ApplicationArea = All;
                 }
             }
         }

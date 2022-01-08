@@ -6,32 +6,35 @@ tableextension 50102 "RCars Rental Car Item" extends Item
         {
             Caption = 'Name';
             DataClassification = CustomerContent;
+            TableRelation = "Item Category".Code;
         }
-        field(50120; "RCars Discount"; Decimal)
-        {
-            Caption = 'Discount';
-            DataClassification = CustomerContent;
-            TableRelation = "Price list line"."RCars Code" where("RCars Type" = const(Customer));
-        }
-        field(50130; "RCars Car Model"; Text[20])
+        field(50120;
+        "RCars Car Model";
+        Text[20])
         {
             Caption = 'Car Model';
             DataClassification = CustomerContent;
         }
-        field(50140; "RCars Car Color"; Enum "RCars Car Color")
+        field(50130; "RCars Car Color"; Enum "RCars Car Color")
         {
             Caption = 'Car Color';
             DataClassification = CustomerContent;
         }
-        field(50150; "RCars Year"; Integer)
+        field(50140; "RCars Year"; Integer)
         {
             Caption = 'Year';
             DataClassification = CustomerContent;
         }
-        field(50160; "RCars Was Crash"; Boolean)
+        field(50150; "RCars Was Crash"; Boolean)
         {
             Caption = 'Was Crash';
             DataClassification = CustomerContent;
+        }
+        field(50200; "RCars Discount"; Decimal)
+        {
+            Caption = 'Discount';
+            DataClassification = CustomerContent;
+            // TableRelation = "Price list line"."RCars Code" where("RCars Type" = const(Customer));
         }
     }
 }

@@ -15,50 +15,54 @@ table 50103 "RCars Rental Sales Line"
         {
             Caption = 'Item No.';
             DataClassification = CustomerContent;
-            TableRelation = Item."No.";
+            TableRelation = Item."No." where(Type = const(Rental));
 
             //скидка
-            trigger OnValidate()
-            begin
-                SetDiscount();
-            end;
+            // trigger OnValidate()
+            // begin
+            //     SetDiscount();
+            // end;
         }
         field(30; "RCars Name"; Text[50])
         {
             Caption = 'Name';
             DataClassification = CustomerContent;
-            TableRelation = item."RCars Name";
-            // TableRelation = item."RCars Name" where(Type = const(Rental));*****************
+            TableRelation = Item."RCars Name" where(Type = const(Rental)); //уточнение фильтра
+            ValidateTableRelation = false; //нужно уточнить
         }
         field(40; "RCars Discount"; Decimal)
         {
             Caption = 'Discount';
             DataClassification = CustomerContent;
-            TableRelation = item."RCars Discount";
+            // TableRelation = Item;
         }
         field(50; "RCars Car Model"; Text[20])
         {
             Caption = 'Car Model';
             DataClassification = CustomerContent;
             TableRelation = item."RCars Car Model";
+            ValidateTableRelation = false;
         }
-        field(60; "RCars Car Color"; Enum "RCars Car Color")
+        field(60; "RCars Car Color"; Text[50])
         {
             Caption = 'Car Color';
             DataClassification = CustomerContent;
             TableRelation = item."RCars Car Color";
+            ValidateTableRelation = false;
         }
         field(70; "RCars Year"; Integer)
         {
             Caption = 'Year';
             DataClassification = CustomerContent;
             TableRelation = item."RCars Year";
+            ValidateTableRelation = false;
         }
         field(80; "RCars Was Crash"; Text[50])
         {
             Caption = 'Was Crashed';
             DataClassification = CustomerContent;
             TableRelation = item."RCars Was Crash";
+            ValidateTableRelation = false;
         }
         field(90; "Start Date"; Date)
         {
@@ -107,7 +111,6 @@ table 50103 "RCars Rental Sales Line"
     begin
         "Use Car Days" := ("End Date" - "Start Date");
     end;
-
 
 
     //процедура добавления скидки
