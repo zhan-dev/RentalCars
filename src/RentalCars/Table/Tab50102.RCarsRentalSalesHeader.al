@@ -33,6 +33,39 @@ table 50102 "RCars Rental Sales Header"
             Caption = 'Customer No.';
             DataClassification = CustomerContent;
             TableRelation = Customer."No.";
+
+            NotBlank = true;
+            trigger OnValidate()
+            var
+                Customer: Record Customer;
+            begin
+                if "Customer No." <> '' then begin
+                    Customer.Get("Customer No.");
+                    Rec.Validate("Customer Name", Customer.Name);
+                    Rec.Validate("Customer Address", Customer.Address);
+                end;
+                // SetDiscount();
+            end;
+        }
+        field(40; "Customer Name"; Text[100])
+        {
+            Caption = 'Customer Name';
+            DataClassification = CustomerContent;
+            TableRelation = Customer.Name;
+            Editable = false;
+        }
+        field(50; "Customer Address"; Text[100])
+        {
+            Caption = 'Customer Address';
+            DataClassification = CustomerContent;
+            TableRelation = Customer.Address;
+            Editable = false;
+        }
+        field(60; Discount; Decimal)
+        {
+            Caption = 'Discount';
+            DataClassification = CustomerContent;
+            Editable = false;
         }
         field(200; "No. Series"; Code[20])
         {
@@ -82,6 +115,18 @@ table 50102 "RCars Rental Sales Header"
         RCarsRentalCarsMgt: Codeunit "RCars Rental Cars Mgt.";
     begin
         RCarsRentalCarsMgt.DeleteRCarsRentalSalesLine(Rec."Doc. No.");
+    end;
+
+
+
+    local procedure SetDiscount()
+    var
+        Customer: Record Customer;
+    begin
+        if Rec."Customer No." <> '' then
+            Customer.get();
+
+        Rec."Discount" := Customer."RCars Discount";
     end;
 
 }

@@ -17,79 +17,110 @@ table 50103 "RCars Rental Sales Line"
             DataClassification = CustomerContent;
             TableRelation = Item."No." where(Type = const(Rental));
 
-            //скидка
-            // trigger OnValidate()
-            // begin
-            //     SetDiscount();
-            // end;
+            trigger OnValidate()
+            var
+                Item: Record Item;
+            begin
+                if "Item No." <> '' then begin
+                    Item.Get("Item No.");
+                    Rec.Validate("RCars Name", Item."RCars Name");
+                    Rec.Validate("RCars Car Model", Item."RCars Car Model");
+                    Rec.Validate("RCars Car Color", Item."RCars Car Color");
+                    Rec.Validate("RCars Year", Item."RCars Year");
+                    Rec.Validate("RCars Was Crash", Item."RCars Was Crash");
+                end;
+                // SetDiscount();
+            end;
         }
         field(30; "RCars Name"; Text[50])
         {
             Caption = 'Name';
             DataClassification = CustomerContent;
-            TableRelation = Item."RCars Name" where(Type = const(Rental)); //уточнение фильтра
-            ValidateTableRelation = false; //нужно уточнить
+            TableRelation = Item."RCars Name"; //уточнение фильтра
+            // ValidateTableRelation = false; //нужно уточнить
+            Editable = false;
         }
-        field(40; "RCars Discount"; Decimal)
-        {
-            Caption = 'Discount';
-            DataClassification = CustomerContent;
-            // TableRelation = Item;
-        }
+
         field(50; "RCars Car Model"; Text[20])
         {
             Caption = 'Car Model';
             DataClassification = CustomerContent;
             TableRelation = item."RCars Car Model";
-            ValidateTableRelation = false;
+            // ValidateTableRelation = false;
+            Editable = false;
         }
-        field(60; "RCars Car Color"; Text[50])
+        field(60; "RCars Car Color"; Enum "RCars Car Color")
         {
             Caption = 'Car Color';
             DataClassification = CustomerContent;
             TableRelation = item."RCars Car Color";
-            ValidateTableRelation = false;
+            // ValidateTableRelation = false;
+            Editable = false;
         }
         field(70; "RCars Year"; Integer)
         {
             Caption = 'Year';
             DataClassification = CustomerContent;
             TableRelation = item."RCars Year";
-            ValidateTableRelation = false;
+            // ValidateTableRelation = false;
+            Editable = false;
         }
-        field(80; "RCars Was Crash"; Text[50])
+        field(80; "RCars Was Crash"; Boolean)
         {
             Caption = 'Was Crashed';
             DataClassification = CustomerContent;
             TableRelation = item."RCars Was Crash";
-            ValidateTableRelation = false;
+            // ValidateTableRelation = false;
+            Editable = false;
         }
         field(90; "Start Date"; Date)
         {
             Caption = 'Start  Date';
             DataClassification = CustomerContent;
+            NotBlank = false;
         }
         field(100; "End Date"; Date)
         {
             Caption = 'End  Date';
             DataClassification = CustomerContent;
+            NotBlank = false;
 
             trigger OnValidate()
             begin
-                if "End Date" <= "Start Date" then begin
-                    "Use Car Days" := 0;
-                    Message('error')
-                end
-                else
-                    UseCarDays();
+                ServiceDays(); //под резерв на сл. день
+                UseCarDays();
+                ServiceReserv()
             end;
 
         }
-        field(110; "Use Car Days"; Integer)
+        field(110; "Service Day"; Date)
+        {
+            Caption = 'Service Day';
+            DataClassification = CustomerContent;
+            Editable = false;
+
+        }
+        field(120; "Use Car Days"; Integer)
         {
             Caption = 'Use Car Days';
             DataClassification = CustomerContent;
             Editable = false;
+        }
+
+        field(150; "RCars Discount"; Decimal)
+        {
+            Caption = 'Discount';
+            DataClassification = CustomerContent;
+            // TableRelation = Item;
+        }
+        field(160; "Amount Discount"; Decimal)
+        {
+            Caption = 'Amount Discount';
+
+            FieldClass = FlowField;
+            Editable = false;
+
+            CalcFormula = max("RCars Rental Sales Line"."RCars Discount" where("Line No." = field("Line No.")));
         }
         field(200; "My Line No."; Integer) //для работы autosplitkey
         {
@@ -106,13 +137,6 @@ table 50103 "RCars Rental Sales Line"
         }
     }
 
-    //разница дат для заказа
-    local procedure UseCarDays()
-    begin
-        "Use Car Days" := ("End Date" - "Start Date");
-    end;
-
-
     //процедура добавления скидки
     local procedure SetDiscount()
     var
@@ -122,6 +146,31 @@ table 50103 "RCars Rental Sales Line"
             Item.get();
 
         Rec."RCars Discount" := Item."RCars Discount";
+        xRec."RCars Discount" := 0;
     end;
 
+
+    local procedure ServiceDays()
+    begin
+        "Service Day" := "End Date" + 1;
+    end;
+
+    local procedure ServiceReserv()
+    begin
+        if ("End Date" = "Service Day") or ("Start Date" = "Service Day") then begin
+            Message('this date is service date');
+            "End Date" := 0D;
+        end;
+    end;
+
+    local procedure UseCarDays()
+    var
+    begin
+        if ("Start Date" = 0D) or ("Start Date" > "End Date") then begin
+            Message('Error');
+            "Start Date" := 0D;
+        end
+        else
+            "Use Car Days" := "End Date" - "Start Date";
+    end;
 }

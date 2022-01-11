@@ -10,11 +10,7 @@ pageextension 50105 "Rental Car Item Lookup Card" extends "Item Lookup"
                 ToolTip = 'Specifies the value of the Name field.';
                 ApplicationArea = All;
             }
-            field("RCars Discount"; Rec."RCars Discount")
-            {
-                ToolTip = 'Specifies the value of the Discount field.';
-                ApplicationArea = All;
-            }
+
             field("RCars Car Model"; Rec."RCars Car Model")
             {
                 ToolTip = 'Specifies the value of the Car Model field.';
@@ -33,6 +29,11 @@ pageextension 50105 "Rental Car Item Lookup Card" extends "Item Lookup"
             field("RCars Was Crash"; Rec."RCars Was Crash")
             {
                 ToolTip = 'Specifies the value of the Was Crash field.';
+                ApplicationArea = All;
+            }
+            field("RCars Discount"; Rec."RCars Discount")
+            {
+                ToolTip = 'Specifies the value of the Discount field.';
                 ApplicationArea = All;
             }
         }

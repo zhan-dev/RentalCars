@@ -28,11 +28,7 @@ page 50105 "RCars Rental Sales Line" //доп. таблица с инфой о �
                     ToolTip = 'Specifies the value of the Name field.';
                     ApplicationArea = All;
                 }
-                field("RCars Discount"; Rec."RCars Discount")
-                {
-                    ToolTip = 'Specifies the value of the Discount field.';
-                    ApplicationArea = All;
-                }
+
                 field("RCars Car Model"; Rec."RCars Car Model")
                 {
                     ToolTip = 'Specifies the value of the Car Model field.';
@@ -58,12 +54,30 @@ page 50105 "RCars Rental Sales Line" //доп. таблица с инфой о �
                     ToolTip = 'Specifies the value of the End  Date field.';
                     ApplicationArea = All;
                 }
+                field("Service Day"; Rec."Service Day")
+                {
+                    ToolTip = 'Specifies the value of the Service Day field.';
+                    ApplicationArea = All;
+                }
                 field("Use Car Days"; Rec."Use Car Days")
                 {
                     ToolTip = 'Specifies the value of the Use Car Days field.';
                     ApplicationArea = All;
                 }
 
+                field("RCars Discount"; Rec."RCars Discount")
+                {
+                    ToolTip = 'Specifies the value of the Discount field.';
+                    ApplicationArea = All;
+                }
+            }
+            group(result)
+            {
+                field("Amount Discount"; Rec."Amount Discount")
+                {
+                    ToolTip = 'Specifies the value of the Amount Discount field.';
+                    ApplicationArea = All;
+                }
             }
         }
     }

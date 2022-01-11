@@ -34,6 +34,8 @@ tableextension 50102 "RCars Rental Car Item" extends Item
         {
             Caption = 'Discount';
             DataClassification = CustomerContent;
+            MinValue = 0;
+            MaxValue = 100;
             // TableRelation = "Price list line"."RCars Code" where("RCars Type" = const(Customer));
         }
     }

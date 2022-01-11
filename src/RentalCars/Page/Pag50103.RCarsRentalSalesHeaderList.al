@@ -31,6 +31,22 @@ page 50103 "RCars Rental Sales Header List"
                     ToolTip = 'Specifies the value of the Customer No. field.';
                     ApplicationArea = All;
                 }
+                field("Customer Name"; Rec."Customer Name")
+                {
+                    ToolTip = 'Specifies the value of the Customer Name field.';
+                    ApplicationArea = All;
+                }
+                field("Customer Address"; Rec."Customer Address")
+                {
+                    ToolTip = 'Specifies the value of the Customer Address field.';
+                    ApplicationArea = All;
+                }
+                field(Discount; Rec.Discount)
+                {
+                    ToolTip = 'Specifies the value of the Discount field.';
+                    ApplicationArea = All;
+                }
+
             }
         }
     }

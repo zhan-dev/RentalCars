@@ -9,5 +9,7 @@ codeunit 50100 "RCars Rental Cars Mgt."
         //     exit;
         RCarsRentalSalesLine.SetRange("Line No.", LineNo);
         RCarsRentalSalesLine.DeleteAll(true);
+
+        RCarsRentalSalesLine.Reset(); //не обязательный
     end;
 }
