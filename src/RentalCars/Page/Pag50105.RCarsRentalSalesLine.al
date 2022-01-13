@@ -82,4 +82,22 @@ page 50105 "RCars Rental Sales Line" //доп. таблица с инфой о �
         }
     }
 
+    actions
+    {
+        area(Processing)
+        {
+            action(ImportExportOrderLines)
+            {
+                ApplicationArea = All;
+                Caption = 'Export\Import Rental Order Lines';
+                RunObject = xmlport "RCars Rental Order Sales Line";
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+                PromotedOnly = true;
+                Image = Export;
+            }
+        }
+    }
+
 }

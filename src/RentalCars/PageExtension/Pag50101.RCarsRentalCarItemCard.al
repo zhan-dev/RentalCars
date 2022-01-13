@@ -39,4 +39,22 @@ pageextension 50101 "RCars Rental Car Item Card" extends "Item Card"
             }
         }
     }
+
+
+    //     actions
+    //     {
+    //       action("RCars ExportImport")
+    // {
+
+    //   ApplicationArea = All;
+    // Caption='ExportImport';
+    //                   RunObject = xmlport "RCars Rental Car Item";
+    //                                   Promoted =true;
+    //                                   PromotedCategory = Process;
+    //                                   PromotedIsBig = true;
+    //                                   PromotedOnly =true;
+    //                                   Image =Export;
+
+    // }
+    //     }
 }
