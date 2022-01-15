@@ -122,16 +122,16 @@ table 50103 "RCars Rental Sales Line"
 
             CalcFormula = max("RCars Rental Sales Line"."RCars Discount" where("Line Doc No." = field("Line Doc No.")));
         }
-        field(200; "My Line No."; Integer) //для работы autosplitkey
+        field(200; "Line No."; Integer) //для работы autosplitkey
         {
-            Caption = 'My Line No.';
+            Caption = 'Line No.';
             DataClassification = CustomerContent;
             Editable = false; //при Enabled (краш в проэкте)
         }
     }
     keys
     {
-        key(PK; "Line Doc No.", "My Line No.")
+        key(PK; "Line Doc No.", "Line No.")
         {
             Clustered = true;
         }
