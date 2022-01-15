@@ -100,6 +100,7 @@ table 50102 "RCars Rental Sales Header"
         NoSeriesMgt.InitSeries(RCarsRentalCarSetup."Rental Car Nos.", xRec."No. Series", 0D, "Doc. No.", "No. Series");
     end;
 
+    // No Series
     local procedure TestNoSeries(var RentalCarSetup: Record "RCars Rental Car Setup")
     begin
         if not RentalCarSetup.Get() then begin

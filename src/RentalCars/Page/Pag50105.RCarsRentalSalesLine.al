@@ -13,9 +13,9 @@ page 50105 "RCars Rental Sales Line" //доп. таблица с инфой о �
         {
             repeater(General)
             {
-                field("Line No."; Rec."Line No.")
+                field("Line No."; Rec."Line Doc No.")
                 {
-                    ToolTip = 'Specifies the value of the Line No. field.';
+                    ToolTip = 'Specifies the value of the Line Doc No. field.';
                     ApplicationArea = All;
                 }
                 field("Item No."; Rec."Item No.")

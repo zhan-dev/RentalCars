@@ -24,7 +24,7 @@ report 50100 "RCars Rental Sales Header"
         }
         dataitem(RCarsRentalSalesLine; "RCars Rental Sales Line")
         {
-            column(LineNo; "Line No.")
+            column(LineNo; "Line Doc No.")
             {
 
             }

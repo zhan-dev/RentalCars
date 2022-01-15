@@ -10,7 +10,7 @@ xmlport 50101 "RCars Rental Order Sales Line"
         {
             tableelement(RCarsRentalSalesLine; "RCars Rental Sales Line")
             {
-                fieldelement(LineNo; RCarsRentalSalesLine."Line No.")
+                fieldelement(LineNo; RCarsRentalSalesLine."Line Doc No.")
                 {
                 }
                 fieldelement(ItemNo; RCarsRentalSalesLine."Item No.")

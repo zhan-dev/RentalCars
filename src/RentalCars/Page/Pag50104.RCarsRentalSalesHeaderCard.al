@@ -41,13 +41,16 @@ page 50104 "RCars Rental Sales Header Card"
                     ToolTip = 'Specifies the value of the Discount field.';
                     ApplicationArea = All;
                 }
+
             }
             part(SalesLines; "RCars Rental Sales Line")
             {
                 ApplicationArea = All;
-                SubPageLink = "Line No." = field("Doc. No."); //привязка к ключу
+                SubPageLink = "Line Doc No." = field("Doc. No."); //привязка к ключу
                 UpdatePropagation = Both; //обновление форм
             }
+
+
         }
     }
 

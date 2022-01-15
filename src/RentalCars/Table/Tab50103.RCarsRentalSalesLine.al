@@ -5,9 +5,9 @@ table 50103 "RCars Rental Sales Line"
 
     fields
     {
-        field(10; "Line No."; Code[20])
+        field(10; "Line Doc No."; Code[20])
         {
-            Caption = 'Line No.';
+            Caption = 'Line Doc No.';
             DataClassification = CustomerContent;
             TableRelation = "RCars Rental Sales Header"."Doc. No."; //автозамена ключа в доп. таблице при смене ключа в основной без потери данных
         }
@@ -117,10 +117,10 @@ table 50103 "RCars Rental Sales Line"
         {
             Caption = 'Amount Discount';
 
-            FieldClass = FlowField;
+            FieldClass = FlowField; //вычисляемое  поле
             Editable = false;
 
-            CalcFormula = max("RCars Rental Sales Line"."RCars Discount" where("Line No." = field("Line No.")));
+            CalcFormula = max("RCars Rental Sales Line"."RCars Discount" where("Line Doc No." = field("Line Doc No.")));
         }
         field(200; "My Line No."; Integer) //для работы autosplitkey
         {
@@ -131,7 +131,7 @@ table 50103 "RCars Rental Sales Line"
     }
     keys
     {
-        key(PK; "Line No.", "My Line No.")
+        key(PK; "Line Doc No.", "My Line No.")
         {
             Clustered = true;
         }
