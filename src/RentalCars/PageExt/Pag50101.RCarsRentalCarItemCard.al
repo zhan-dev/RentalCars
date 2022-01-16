@@ -36,6 +36,11 @@ pageextension 50101 "RCars Rental Car Item Card" extends "Item Card"
                     ToolTip = 'Specifies the value of the Discount field.';
                     ApplicationArea = All;
                 }
+                field("RCars Cost per Day"; Rec."RCars Cost per Day")
+                {
+                    ToolTip = 'Specifies the value of the Cost per Day field.';
+                    ApplicationArea = All;
+                }
             }
         }
     }

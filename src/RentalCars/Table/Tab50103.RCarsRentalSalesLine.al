@@ -113,7 +113,15 @@ table 50103 "RCars Rental Sales Line"
             DataClassification = CustomerContent;
             // TableRelation = Item;
         }
-        field(160; "Amount Discount"; Decimal)
+        field(170; Cost; Decimal)
+        {
+            Caption = 'Cost';
+            DataClassification = CustomerContent;
+
+            Editable = false;
+
+        }
+        field(180; "Amount Discount"; Decimal)
         {
             Caption = 'Amount Discount';
 

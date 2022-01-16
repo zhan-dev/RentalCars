@@ -38,5 +38,10 @@ tableextension 50102 "RCars Rental Car Item" extends Item
             MaxValue = 100;
             // TableRelation = "Price list line"."RCars Code" where("RCars Type" = const(Customer));
         }
+        field(50250; "RCars Cost per Day"; Decimal)
+        {
+            Caption = 'Cost per Day';
+            DataClassification = CustomerContent;
+        }
     }
 }
