@@ -1,6 +1,6 @@
-table 50103 "RCars Rental Sales Line"
+table 50103 "RCars Sales Line"
 {
-    Caption = 'Rental Sales Line';
+    Caption = 'Sales Line';
     DataClassification = ToBeClassified;
 
     fields
@@ -9,7 +9,8 @@ table 50103 "RCars Rental Sales Line"
         {
             Caption = 'Line Doc No.';
             DataClassification = CustomerContent;
-            TableRelation = "RCars Rental Sales Header"."Doc. No."; //автозамена ключа в доп. таблице при смене ключа в основной без потери данных
+            TableRelation = "RCars Sales Header"."Doc. No."; //автозамена ключа в доп. таблице при смене ключа в основной без потери данных
+            Editable = false;
         }
         field(20; "Item No."; Code[20])
         {
@@ -28,6 +29,9 @@ table 50103 "RCars Rental Sales Line"
                     Rec.Validate("RCars Car Color", Item."RCars Car Color");
                     Rec.Validate("RCars Year", Item."RCars Year");
                     Rec.Validate("RCars Was Crash", Item."RCars Was Crash");
+                    Rec.Validate("RCars Discount", Item."RCars Discount");
+                    Rec.Validate("RCars Cost Per Day", Item."RCars Cost per Day");
+                    Rec.Validate("RCars Cost", Item."RCars Cost per Day");
                 end;
                 // SetDiscount();
             end;
@@ -53,7 +57,7 @@ table 50103 "RCars Rental Sales Line"
         {
             Caption = 'Car Color';
             DataClassification = CustomerContent;
-            TableRelation = item."RCars Car Color";
+            TableRelation = Item."RCars Car Color";
             // ValidateTableRelation = false;
             Editable = false;
         }
@@ -78,6 +82,12 @@ table 50103 "RCars Rental Sales Line"
             Caption = 'Start  Date';
             DataClassification = CustomerContent;
             NotBlank = false;
+
+
+            trigger OnValidate()
+            begin
+                CalcLineFields();
+            end;
         }
         field(100; "End Date"; Date)
         {
@@ -87,11 +97,8 @@ table 50103 "RCars Rental Sales Line"
 
             trigger OnValidate()
             begin
-                ServiceDays(); //под резерв на сл. день
-                UseCarDays();
-                ServiceReserv()
+                CalcLineFields();
             end;
-
         }
         field(110; "Service Day"; Date)
         {
@@ -111,24 +118,41 @@ table 50103 "RCars Rental Sales Line"
         {
             Caption = 'Discount';
             DataClassification = CustomerContent;
-            // TableRelation = Item;
-        }
-        field(170; Cost; Decimal)
-        {
-            Caption = 'Cost';
-            DataClassification = CustomerContent;
+            TableRelation = Item."RCars Discount";
 
             Editable = false;
-
         }
-        field(180; "Amount Discount"; Decimal)
+        field(170; "RCars Cost Per Day"; Decimal)
+        {
+            Caption = 'RCars Cost Per Day';
+            DataClassification = CustomerContent;
+            TableRelation = Item."RCars Cost per Day";
+            Editable = false;
+        }
+        field(175; "RCars Cost"; Decimal)
+        {
+            Caption = 'RCars Cost';
+            DataClassification = CustomerContent;
+            TableRelation = Item."RCars Cost per Day";
+            Editable = false;
+        }
+        field(180; "Amount Cost"; Decimal)
+        {
+            Caption = 'Amount Cost';
+
+            FieldClass = FlowField; //вычисляемое  поле
+            Editable = false;
+
+            CalcFormula = sum("RCars Sales Line"."RCars Cost" where("Line Doc No." = field("Line Doc No.")));
+        }
+        field(190; "Amount Discount"; Decimal)
         {
             Caption = 'Amount Discount';
 
             FieldClass = FlowField; //вычисляемое  поле
             Editable = false;
 
-            CalcFormula = max("RCars Rental Sales Line"."RCars Discount" where("Line Doc No." = field("Line Doc No.")));
+            CalcFormula = max("RCars Sales Line"."RCars Discount" where("Line Doc No." = field("Line Doc No.")));
         }
         field(200; "Line No."; Integer) //для работы autosplitkey
         {
@@ -158,27 +182,32 @@ table 50103 "RCars Rental Sales Line"
     end;
 
 
-    local procedure ServiceDays()
-    begin
-        "Service Day" := "End Date" + 1;
-    end;
-
-    local procedure ServiceReserv()
-    begin
-        if ("End Date" = "Service Day") or ("Start Date" = "Service Day") then begin
-            Message('this date is service date');
-            "End Date" := 0D;
-        end;
-    end;
-
-    local procedure UseCarDays()
+    local procedure CalcLineFields()
     var
     begin
-        if ("Start Date" = 0D) or ("Start Date" > "End Date") then begin
-            Message('Error');
-            "Start Date" := 0D;
-        end
-        else
-            "Use Car Days" := "End Date" - "Start Date";
+
+        if ("End Date" = 0D) then begin
+            Message('Check Date`s');
+            "End Date" := "Start Date" + 1;
+        end;
+
+        if ("Start Date" = 0D) then begin
+            Message('Check Date`s');
+            "Start Date" := "End Date" - 1;
+        end;
+
+        if ("Start Date" >= "End Date") then begin
+            Message('Check Dates again');
+            "Start Date" := xRec."Start Date";
+            "End Date" := xRec."End Date";
+        end;
+
+        "Use Car Days" := "End Date" - "Start Date";
+
+        "Service Day" := "End Date" + 1;
+
+        "RCars Cost" := "RCars Cost Per Day" * "Use Car Days";
+
     end;
+
 }

@@ -1,4 +1,4 @@
-pageextension 50102 "RCars Rental Customer Card" extends "Customer Card" //21
+pageextension 50102 "RCars Customer Card" extends "Customer Card" //21
 {
     layout
     {

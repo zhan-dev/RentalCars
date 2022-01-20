@@ -1,14 +1,14 @@
-page 50103 "RCars Rental Sales Header List"
+page 50103 "RCars Sales Header List"
 {
 
-    ApplicationArea = All;
-    Caption = 'Rental Sales Header';
+    ApplicationArea = All; //видимость области
+    Caption = 'Sales Header';
     PageType = List;
-    SourceTable = "RCars Rental Sales Header";
+    SourceTable = "RCars Sales Header";
     UsageCategory = Lists;
 
-    CardPageId = "RCars Rental Sales Header Card"; //ссылка  на карточку 
-    Editable = false; // запрет редактирования
+    CardPageId = "RCars Sales Header Card"; //ссылка  на карточку 
+    Editable = false; // запрет редактирования листа на главной
 
     layout
     {
@@ -24,6 +24,16 @@ page 50103 "RCars Rental Sales Header List"
                 field("Salesperson No."; Rec."Salesperson No.")
                 {
                     ToolTip = 'Specifies the value of the Salesperson No. field.';
+                    ApplicationArea = All;
+                }
+                field("Salesperson Name"; Rec."Salesperson Name")
+                {
+                    ToolTip = 'Specifies the value of the Salesperson Name field.';
+                    ApplicationArea = All;
+                }
+                field("Salesperson E-Mail"; Rec."Salesperson E-Mail")
+                {
+                    ToolTip = 'Specifies the value of the Email field.';
                     ApplicationArea = All;
                 }
                 field("Customer No."; Rec."Customer No.")
@@ -50,5 +60,4 @@ page 50103 "RCars Rental Sales Header List"
             }
         }
     }
-
 }

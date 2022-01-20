@@ -1,4 +1,4 @@
-tableextension 50101 "RCars Rental Customer" extends Customer //18
+tableextension 50101 "RCars Customer" extends Customer //18
 {
     fields
     {

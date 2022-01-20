@@ -1,4 +1,4 @@
-pageextension 50106 "RCars Rental RoleCenter" extends "Order Processor Role Center"
+pageextension 50106 "RCars Processor Role Center" extends "Order Processor Role Center"
 {
     actions
     {

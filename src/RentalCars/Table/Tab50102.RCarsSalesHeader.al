@@ -1,6 +1,6 @@
-table 50102 "RCars Rental Sales Header"
+table 50102 "RCars Sales Header"
 {
-    Caption = 'Rental Sales Header';
+    Caption = 'Sales Header';
     DataClassification = ToBeClassified;
 
     fields
@@ -12,12 +12,12 @@ table 50102 "RCars Rental Sales Header"
 
             trigger OnValidate()
             var
-                RentalCarSetup: Record "RCars Rental Car Setup";
+                Setup: Record "RCars Setup";
                 NoSeriesMgt: Codeunit NoSeriesManagement;
             begin
                 if "Doc. No." <> xRec."Doc. No." then begin
-                    TestNoSeries(RentalCarSetup);
-                    NoSeriesMgt.TestManual(RentalCarSetup."Rental Car Nos.");
+                    TestNoSeries(Setup);
+                    NoSeriesMgt.TestManual(Setup."Rental Car Nos.");
                     "No. Series" := '';
                 end;
             end;
@@ -27,6 +27,32 @@ table 50102 "RCars Rental Sales Header"
             Caption = 'Salesperson No.';
             DataClassification = CustomerContent;
             TableRelation = "Salesperson/Purchaser".Code;
+
+            trigger OnValidate()
+            var
+                SalespersonPurchaser: Record "Salesperson/Purchaser";
+            begin
+                if "Salesperson No." <> '' then begin
+                    SalespersonPurchaser.Get("Salesperson No.");
+                    Rec.Validate("Salesperson Name", SalespersonPurchaser.Name);
+                    Rec.Validate("Salesperson E-Mail", SalespersonPurchaser."E-Mail");
+                end;
+            end;
+        }
+        field(23; "Salesperson Name"; Text[50])
+        {
+            Caption = 'Salesperson Name';
+            DataClassification = CustomerContent;
+            TableRelation = "Salesperson/Purchaser".Name;
+            Editable = false;
+        }
+        field(26; "Salesperson E-Mail"; Text[80])
+        {
+            Caption = 'Email';
+            ExtendedDatatype = EMail;
+            DataClassification = CustomerContent;
+            TableRelation = "Salesperson/Purchaser"."E-Mail";
+            Editable = false;
         }
         field(30; "Customer No."; Code[20])
         {
@@ -90,32 +116,32 @@ table 50102 "RCars Rental Sales Header"
 
     local procedure InitInsert()
     var
-        RCarsRentalCarSetup: Record "RCars Rental Car Setup";
+        Setup: Record "RCars Setup";
         NoSeriesMgt: Codeunit NoSeriesManagement;
     begin
         if "Doc. No." <> '' then
             exit;
 
-        TestNoSeries(RCarsRentalCarSetup);
-        NoSeriesMgt.InitSeries(RCarsRentalCarSetup."Rental Car Nos.", xRec."No. Series", 0D, "Doc. No.", "No. Series");
+        TestNoSeries(Setup);
+        NoSeriesMgt.InitSeries(Setup."Rental Car Nos.", xRec."No. Series", 0D, "Doc. No.", "No. Series");
     end;
 
     // No Series
-    local procedure TestNoSeries(var RentalCarSetup: Record "RCars Rental Car Setup")
+    local procedure TestNoSeries(var Setup: Record "RCars Setup")
     begin
-        if not RentalCarSetup.Get() then begin
-            RentalCarSetup.Insert();
+        if not Setup.Get() then begin
+            Setup.Insert();
             Commit();
         end;
-        RentalCarSetup.TestField("Rental Car Nos.");
+        Setup.TestField("Rental Car Nos.");
     end;
 
     //процедура на удаление записи из таблицы заказа, и связанной с ней таблицы одновременно
     trigger OnDelete()
     var
-        RCarsRentalCarsMgt: Codeunit "RCars Rental Cars Mgt.";
+        Mgt: Codeunit "RCars Mgt.";
     begin
-        RCarsRentalCarsMgt.DeleteRCarsRentalSalesLine(Rec."Doc. No.");
+        Mgt.DeleteSalesLine(Rec."Doc. No.");
     end;
 
 
@@ -129,5 +155,7 @@ table 50102 "RCars Rental Sales Header"
 
         Rec."Discount" := Customer."RCars Discount";
     end;
+
+
 
 }

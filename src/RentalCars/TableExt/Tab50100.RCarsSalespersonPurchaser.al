@@ -1,4 +1,4 @@
-tableextension 50100 "RCars Rental Salesperson" extends "Salesperson/Purchaser"
+tableextension 50100 "RCars Salesperson/Purchaser" extends "Salesperson/Purchaser"
 {
     fields
     {

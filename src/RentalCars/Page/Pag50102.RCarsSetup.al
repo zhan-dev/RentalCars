@@ -1,9 +1,9 @@
-page 50102 "RCars Rental Car Setup" //доп. таблица для авто генерации ключа
+page 50102 "RCars Setup" //доп. таблица для авто генерации ключа
 {
 
-    Caption = 'RCars Rental Car Setup';
+    Caption = 'RCars Setup';
     PageType = Card;
-    SourceTable = "RCars Rental Car Setup";
+    SourceTable = "RCars Setup";
 
     ApplicationArea = All;
     UsageCategory = Administration;

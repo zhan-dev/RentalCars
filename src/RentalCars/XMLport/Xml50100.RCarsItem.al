@@ -1,6 +1,6 @@
-xmlport 50100 "RCars RentalCarItem"
+xmlport 50100 "RCars Item"
 {
-    Caption = 'RentalCarItem';
+    Caption = 'Item';
     FormatEvaluate = Xml; //формат, в котором работает
     Encoding = UTF8;
     schema

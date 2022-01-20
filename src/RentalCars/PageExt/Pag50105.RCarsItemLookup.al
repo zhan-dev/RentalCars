@@ -1,4 +1,4 @@
-pageextension 50105 "Rental Car Item Lookup Card" extends "Item Lookup"
+pageextension 50105 "RCars Item Lookup" extends "Item Lookup"
 {
     layout
     {

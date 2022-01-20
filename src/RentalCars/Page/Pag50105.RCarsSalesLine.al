@@ -1,9 +1,9 @@
-page 50105 "RCars Rental Sales Line" //доп. таблица с инфой о заказе (привязанная к другой карточке)
+page 50105 "RCars Sales Line" //доп. таблица с инфой о заказе (привязанная к другой карточке)
 {
 
-    Caption = 'Rental Sales Line';
+    Caption = 'Sales Line';
     PageType = ListPart;
-    SourceTable = "RCars Rental Sales Line";
+    SourceTable = "RCars Sales Line";
 
     AutoSplitKey = true; //авто ключ в связанной таблице
 
@@ -49,12 +49,12 @@ page 50105 "RCars Rental Sales Line" //доп. таблица с инфой о �
                     ToolTip = 'Specifies the value of the Year field.';
                     ApplicationArea = All;
                 }
-                field("Start  Date"; Rec."Start Date")
+                field("Start Date"; Rec."Start Date")
                 {
                     ToolTip = 'Specifies the value of the Start  Date field.';
                     ApplicationArea = All;
                 }
-                field("End  Date"; Rec."End Date")
+                field("End Date"; Rec."End Date")
                 {
                     ToolTip = 'Specifies the value of the End  Date field.';
                     ApplicationArea = All;
@@ -69,15 +69,30 @@ page 50105 "RCars Rental Sales Line" //доп. таблица с инфой о �
                     ToolTip = 'Specifies the value of the Use Car Days field.';
                     ApplicationArea = All;
                 }
-
                 field("RCars Discount"; Rec."RCars Discount")
                 {
                     ToolTip = 'Specifies the value of the Discount field.';
                     ApplicationArea = All;
                 }
+                field("RCars Cost Per Day"; Rec."RCars Cost Per Day")
+                {
+                    ToolTip = 'Specifies the value of the Cost Per Day field.';
+                    ApplicationArea = All;
+                }
+                field("RCars Cost"; Rec."RCars Cost")
+                {
+                    ToolTip = 'Specifies the value of the RCars Cost field.';
+                    ApplicationArea = All;
+                }
+
             }
-            group(result)
+            group(Total)
             {
+                field("Amount Cost"; Rec."Amount Cost")
+                {
+                    ToolTip = 'Specifies the value of the Amount Cost field.';
+                    ApplicationArea = All;
+                }
                 field("Amount Discount"; Rec."Amount Discount")
                 {
                     ToolTip = 'Specifies the value of the Amount Discount field.';
@@ -95,7 +110,7 @@ page 50105 "RCars Rental Sales Line" //доп. таблица с инфой о �
             {
                 ApplicationArea = All;
                 Caption = 'Export\Import Rental Order Lines';
-                RunObject = xmlport "RCars Rental Order Sales Line";
+                RunObject = xmlport "RCars Order Sales Line";
                 Promoted = true;
                 PromotedCategory = Process;
                 PromotedIsBig = true;

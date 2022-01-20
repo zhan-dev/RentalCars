@@ -1,6 +1,6 @@
-xmlport 50101 "RCars Rental Order Sales Line"
+xmlport 50101 "RCars Order Sales Line"
 {
-    Caption = 'Rental Order Sales Line';
+    Caption = 'Order Sales Line';
     FormatEvaluate = Xml; //формат, в котором работает
     Encoding = UTF8;
     // Direction = Export;
@@ -8,7 +8,7 @@ xmlport 50101 "RCars Rental Order Sales Line"
     {
         textelement(RootNodeName)
         {
-            tableelement(RCarsRentalSalesLine; "RCars Rental Sales Line")
+            tableelement(RCarsRentalSalesLine; "RCars Sales Line")
             {
                 fieldelement(LineNo; RCarsRentalSalesLine."Line Doc No.")
                 {

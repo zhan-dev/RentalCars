@@ -1,7 +1,7 @@
-report 50100 "RCars Rental Sales Header"
+report 50100 "RCars Sales Header"
 {
     ApplicationArea = All;
-    Caption = 'Rental Sales Header';
+    Caption = 'Sales Header';
     UsageCategory = ReportsAndAnalysis;
 
     WordLayout = 'src\RentalCars\Layout\RentalCars.docx';
@@ -9,7 +9,7 @@ report 50100 "RCars Rental Sales Header"
     DefaultLayout = RDLC;
     dataset
     {
-        dataitem(RCarsRentalSalesHeader; "RCars Rental Sales Header")
+        dataitem(RCarsRentalSalesHeader; "RCars Sales Header")
         {
             column(CustomerNo; "Customer No.")
             {
@@ -22,7 +22,7 @@ report 50100 "RCars Rental Sales Header"
             {
             }
         }
-        dataitem(RCarsRentalSalesLine; "RCars Rental Sales Line")
+        dataitem(RCarsRentalSalesLine; "RCars Sales Line")
         {
             column(LineNo; "Line Doc No.")
             {

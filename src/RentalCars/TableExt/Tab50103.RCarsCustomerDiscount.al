@@ -1,4 +1,4 @@
-tableextension 50103 "Rental Car/Customer Discount " extends "Price List Line"
+tableextension 50103 "RCars Customer Discount" extends "Price List Line"
 {
     fields
     {

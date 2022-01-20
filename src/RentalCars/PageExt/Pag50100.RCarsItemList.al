@@ -1,4 +1,4 @@
-pageextension 50100 "RCars Rental Car Item List" extends "Item List"
+pageextension 50100 "RCars Item List" extends "Item List"
 {
     layout
     {
