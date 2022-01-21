@@ -44,4 +44,19 @@ tableextension 50102 "RCars Item" extends Item
             DataClassification = CustomerContent;
         }
     }
+
+
+    fieldgroups
+    {
+        //Добавиление в DrillDown
+        addlast(DropDown; "RCars Name", "RCars Car Model")
+        {
+
+        }
+        //Отображение при наведении на поле (как доп. инфа)
+        addlast(Brick; "RCars Name")
+        {
+
+        }
+    }
 }
