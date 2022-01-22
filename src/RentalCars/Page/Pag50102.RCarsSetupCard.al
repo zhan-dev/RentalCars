@@ -1,4 +1,4 @@
-page 50102 "RCars Setup" //доп. таблица для авто генерации ключа
+page 50102 "RCars Setup Card" //доп. таблица для авто генерации ключа
 {
 
     Caption = 'RCars Setup';
@@ -14,9 +14,9 @@ page 50102 "RCars Setup" //доп. таблица для авто генерац
         {
             group(Numbering)
             {
-                field("Rental Car Nos."; Rec."Rental Car Nos.")
+                field("Nos."; Rec."Nos.")
                 {
-                    ToolTip = 'Specifies the value of the Rental Car Nos. field.';
+                    ToolTip = 'Specifies the value of the Nos. field.';
                     ApplicationArea = All;
                 }
             }

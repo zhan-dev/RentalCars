@@ -56,6 +56,11 @@ page 50103 "RCars Sales Header List"
                     ToolTip = 'Specifies the value of the Discount field.';
                     ApplicationArea = All;
                 }
+                field("Order Date"; Rec."Order Date")
+                {
+                    ToolTip = 'Specifies the value of the Order Date field.';
+                    ApplicationArea = All;
+                }
 
             }
         }

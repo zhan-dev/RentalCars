@@ -10,11 +10,11 @@ table 50101 "RCars Setup"  // доп. таблица для авто генер�
             Caption = 'Code';
             DataClassification = CustomerContent;
         }
-        field(2; "Rental Car Nos."; Code[20])
+        field(2; "Nos."; Code[20])
         {
-            Caption = 'Rental Car Nos.';
+            Caption = 'Nos.';
             DataClassification = CustomerContent;
-            TableRelation = "No. Series";
+            TableRelation = "No. Series"; //308
         }
     }
     keys

@@ -17,7 +17,7 @@ table 50102 "RCars Sales Header"
             begin
                 if "Doc. No." <> xRec."Doc. No." then begin
                     TestNoSeries(Setup);
-                    NoSeriesMgt.TestManual(Setup."Rental Car Nos.");
+                    NoSeriesMgt.TestManual(Setup."Nos.");
                     "No. Series" := '';
                 end;
             end;
@@ -93,6 +93,12 @@ table 50102 "RCars Sales Header"
             DataClassification = CustomerContent;
             Editable = false;
         }
+        field(70; "Order Date"; Date)
+        {
+            Caption = 'Order Date';
+            DataClassification = CustomerContent;
+            Editable = false;
+        }
         field(200; "No. Series"; Code[20])
         {
             Caption = 'No. Series';
@@ -112,31 +118,31 @@ table 50102 "RCars Sales Header"
     trigger OnInsert()
     begin
         InitInsert();
+        OrderDate();
     end;
 
-    local procedure InitInsert()
+    local procedure InitInsert() //No. Series
     var
         Setup: Record "RCars Setup";
         NoSeriesMgt: Codeunit NoSeriesManagement;
     begin
-        if "Doc. No." <> '' then
+        if "Doc. No." <> '' then // для ввода ключа вручную
             exit;
-
         TestNoSeries(Setup);
-        NoSeriesMgt.InitSeries(Setup."Rental Car Nos.", xRec."No. Series", 0D, "Doc. No.", "No. Series");
+        NoSeriesMgt.InitSeries(Setup."Nos.", xRec."No. Series", 0D, "Doc. No.", "No. Series");
     end;
 
-    // No Series
+    // No. Series
     local procedure TestNoSeries(var Setup: Record "RCars Setup")
     begin
         if not Setup.Get() then begin
             Setup.Insert();
             Commit();
         end;
-        Setup.TestField("Rental Car Nos.");
+        Setup.TestField("Nos."); //проверка на ''
     end;
 
-    //процедура на удаление записи из таблицы заказа, и связанной с ней таблицы одновременно
+    //Delete SalesHeader  with all SalesLine(listpart)
     trigger OnDelete()
     var
         Mgt: Codeunit "RCars Mgt.";
@@ -156,6 +162,10 @@ table 50102 "RCars Sales Header"
         Rec."Discount" := Customer."RCars Discount";
     end;
 
-
+    local procedure OrderDate()
+    var
+    begin
+        "Order Date" := WorkDate;
+    end;
 
 }

@@ -109,7 +109,7 @@ page 50105 "RCars Sales Line" //доп. таблица с инфой о зака
             action(ImportExportOrderLines)
             {
                 ApplicationArea = All;
-                Caption = 'Export\Import Rental Order Lines';
+                Caption = 'Export\Import RCars Order Lines';
                 RunObject = xmlport "RCars Order Sales Line";
                 Promoted = true;
                 PromotedCategory = Process;
