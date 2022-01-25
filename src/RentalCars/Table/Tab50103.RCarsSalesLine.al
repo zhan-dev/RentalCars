@@ -140,7 +140,7 @@ table 50103 "RCars Sales Line"
         {
             Caption = 'Amount Cost';
 
-            FieldClass = FlowField; //вычисляемое  поле
+            FieldClass = FlowField; //вычисляемое  поле, не хранится в базе
             Editable = false;
 
             CalcFormula = sum("RCars Sales Line"."RCars Cost" where("Line Doc No." = field("Line Doc No.")));
@@ -149,7 +149,7 @@ table 50103 "RCars Sales Line"
         {
             Caption = 'Amount Discount';
 
-            FieldClass = FlowField; //вычисляемое  поле
+            FieldClass = FlowField; //вычисляемое  поле, не хранится в базе
             Editable = false;
 
             CalcFormula = max("RCars Sales Line"."RCars Discount" where("Line Doc No." = field("Line Doc No.")));
@@ -187,12 +187,12 @@ table 50103 "RCars Sales Line"
     begin
 
         if ("End Date" = 0D) then begin
-            Message('Check Date`s');
+            Message('Check Dates');
             "End Date" := "Start Date" + 1;
         end;
 
-        if ("Start Date" = 0D) then begin
-            Message('Check Date`s');
+        if ("Start Date" = 0D) or ("Start Date" <= WorkDate) then begin
+            Message('Check Dates');
             "Start Date" := "End Date" - 1;
         end;
 
@@ -200,6 +200,12 @@ table 50103 "RCars Sales Line"
             Message('Check Dates again');
             "Start Date" := xRec."Start Date";
             "End Date" := xRec."End Date";
+        end;
+
+        if ("Start Date" <= WorkDate) or ("End Date" <= WorkDate) then begin
+            Message('This Days go one');
+            "Start Date" := System.Today();
+            "Start Date" := System.Today() + 1;
         end;
 
         "Use Car Days" := "End Date" - "Start Date";

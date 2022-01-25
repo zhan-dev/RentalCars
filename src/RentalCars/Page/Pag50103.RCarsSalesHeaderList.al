@@ -61,7 +61,22 @@ page 50103 "RCars Sales Header List"
                     ToolTip = 'Specifies the value of the Order Date field.';
                     ApplicationArea = All;
                 }
-
+            }
+        }
+    }
+    actions
+    {
+        area(reporting)
+        {
+            action("RCars Sales Order")
+            {
+                ApplicationArea = All;
+                Caption = 'RCars Sales Order';
+                Image = "Report";
+                Promoted = true;
+                PromotedCategory = "Report";
+                RunObject = Report "RCars Sales Order";
+                ToolTip = 'View, print, or save an overview of availability of items for shipment on sales documents, filtered on shipment status.';
             }
         }
     }

@@ -1,6 +1,6 @@
 enum 50100 "RCars Car Color"
 {
-    Extensible = true;
+    Extensible = true; // возможность редактирования
 
     value(0; " ")
     {
