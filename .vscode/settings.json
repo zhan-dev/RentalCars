@@ -8,5 +8,13 @@
     "CRS.ObjectNamePrefix": "RCars ",
     "CRS.ObjectNameSuffix": "",
     "CRS.RemoveSuffixFromFilename": false,
-    "CRS.RemovePrefixFromFilename": false
+    "CRS.RemovePrefixFromFilename": false,
+
+    "al.enableCodeAnalysis": false,
+    "al.codeAnalyzers": [
+      "${CodeCop}",
+      "${PerTenantExtensionCop}", //for ISV проверка диапазона (50000)
+      "${AppSourceCop}", //for ISV (если отправляем на маркет)
+      "${UICop}"
+    ]
 }

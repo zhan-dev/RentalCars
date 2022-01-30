@@ -70,6 +70,7 @@ page 50103 "RCars Sales Header List"
         {
             action("RCars Sales Order")
             {
+                // PromotedOnly = true; //приходь компилятора (не обязателен)
                 ApplicationArea = All;
                 Caption = 'RCars Sales Order';
                 Image = "Report";

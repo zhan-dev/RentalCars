@@ -16,30 +16,39 @@ report 50100 "RCars Sales Order"
 
             column(DocNo_RCarsSalesHeader; "Doc. No.")
             {
+                IncludeCaption = true;
             }
             column(SalespersonNo_RCarsSalesHeader; "Salesperson No.")
             {
+                IncludeCaption = true;
             }
             column(SalespersonName_RCarsSalesHeader; "Salesperson Name")
             {
+                IncludeCaption = true;
             }
             column(SalespersonEMail_RCarsSalesHeader; "Salesperson E-Mail")
             {
+                IncludeCaption = true;
             }
             column(CustomerNo_RCarsSalesHeader; "Customer No.")
             {
+                IncludeCaption = true;
             }
             column(CustomerName_RCarsSalesHeader; "Customer Name")
             {
+                IncludeCaption = true;
             }
             column(CustomerAddress_RCarsSalesHeader; "Customer Address")
             {
+                IncludeCaption = true;
             }
             column(Discount_RCarsSalesHeader; Discount)
             {
+                IncludeCaption = true;
             }
             column(OrderDate_RCarsSalesHeader; "Order Date")
             {
+                IncludeCaption = true;
             }
         }
         dataitem(RCarsSalesLine; "RCars Sales Line")

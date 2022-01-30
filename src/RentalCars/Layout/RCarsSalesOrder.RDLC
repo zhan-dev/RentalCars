@@ -458,6 +458,87 @@
     </ReportSection>
   </ReportSections>
   <ReportParameters>
+    <ReportParameter Name="DocNo_RCarsSalesHeaderCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>DocNo_RCarsSalesHeaderCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>DocNo_RCarsSalesHeaderCaption</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="SalespersonNo_RCarsSalesHeaderCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>SalespersonNo_RCarsSalesHeaderCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>SalespersonNo_RCarsSalesHeaderCaption</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="SalespersonName_RCarsSalesHeaderCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>SalespersonName_RCarsSalesHeaderCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>SalespersonName_RCarsSalesHeaderCaption</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="SalespersonEMail_RCarsSalesHeaderCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>SalespersonEMail_RCarsSalesHeaderCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>SalespersonEMail_RCarsSalesHeaderCaption</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="CustomerNo_RCarsSalesHeaderCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>CustomerNo_RCarsSalesHeaderCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>CustomerNo_RCarsSalesHeaderCaption</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="CustomerName_RCarsSalesHeaderCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>CustomerName_RCarsSalesHeaderCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>CustomerName_RCarsSalesHeaderCaption</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="CustomerAddress_RCarsSalesHeaderCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>CustomerAddress_RCarsSalesHeaderCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>CustomerAddress_RCarsSalesHeaderCaption</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Discount_RCarsSalesHeaderCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>Discount_RCarsSalesHeaderCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Discount_RCarsSalesHeaderCaption</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="OrderDate_RCarsSalesHeaderCaption">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>OrderDate_RCarsSalesHeaderCaption</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>OrderDate_RCarsSalesHeaderCaption</Prompt>
+    </ReportParameter>
     <ReportParameter Name="LineNoCaption">
       <DataType>String</DataType>
       <DefaultValue>
@@ -543,51 +624,96 @@
   <ReportParametersLayout>
     <GridLayoutDefinition>
       <NumberOfColumns>1</NumberOfColumns>
-      <NumberOfRows>9</NumberOfRows>
+      <NumberOfRows>18</NumberOfRows>
       <CellDefinitions>
         <CellDefinition>
           <ColumnIndex>0</ColumnIndex>
           <RowIndex>0</RowIndex>
-          <ParameterName>LineNoCaption</ParameterName>
+          <ParameterName>DocNo_RCarsSalesHeaderCaption</ParameterName>
         </CellDefinition>
         <CellDefinition>
           <ColumnIndex>0</ColumnIndex>
           <RowIndex>1</RowIndex>
-          <ParameterName>RCarsName_RCarsSalesLineCaption</ParameterName>
+          <ParameterName>SalespersonNo_RCarsSalesHeaderCaption</ParameterName>
         </CellDefinition>
         <CellDefinition>
           <ColumnIndex>0</ColumnIndex>
           <RowIndex>2</RowIndex>
-          <ParameterName>RCarsCarModel_RCarsSalesLineCaption</ParameterName>
+          <ParameterName>SalespersonName_RCarsSalesHeaderCaption</ParameterName>
         </CellDefinition>
         <CellDefinition>
           <ColumnIndex>0</ColumnIndex>
           <RowIndex>3</RowIndex>
-          <ParameterName>RCarsCarColor_RCarsSalesLineCaption</ParameterName>
+          <ParameterName>SalespersonEMail_RCarsSalesHeaderCaption</ParameterName>
         </CellDefinition>
         <CellDefinition>
           <ColumnIndex>0</ColumnIndex>
           <RowIndex>4</RowIndex>
-          <ParameterName>RCarsYear_RCarsSalesLineCaption</ParameterName>
+          <ParameterName>CustomerNo_RCarsSalesHeaderCaption</ParameterName>
         </CellDefinition>
         <CellDefinition>
           <ColumnIndex>0</ColumnIndex>
           <RowIndex>5</RowIndex>
-          <ParameterName>RCarsWasCrash_RCarsSalesLineCaption</ParameterName>
+          <ParameterName>CustomerName_RCarsSalesHeaderCaption</ParameterName>
         </CellDefinition>
         <CellDefinition>
           <ColumnIndex>0</ColumnIndex>
           <RowIndex>6</RowIndex>
-          <ParameterName>StartDate_RCarsSalesLineCaption</ParameterName>
+          <ParameterName>CustomerAddress_RCarsSalesHeaderCaption</ParameterName>
         </CellDefinition>
         <CellDefinition>
           <ColumnIndex>0</ColumnIndex>
           <RowIndex>7</RowIndex>
-          <ParameterName>EndDate_RCarsSalesLineCaption</ParameterName>
+          <ParameterName>Discount_RCarsSalesHeaderCaption</ParameterName>
         </CellDefinition>
         <CellDefinition>
           <ColumnIndex>0</ColumnIndex>
           <RowIndex>8</RowIndex>
+          <ParameterName>OrderDate_RCarsSalesHeaderCaption</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>9</RowIndex>
+          <ParameterName>LineNoCaption</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>10</RowIndex>
+          <ParameterName>RCarsName_RCarsSalesLineCaption</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>11</RowIndex>
+          <ParameterName>RCarsCarModel_RCarsSalesLineCaption</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>12</RowIndex>
+          <ParameterName>RCarsCarColor_RCarsSalesLineCaption</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>13</RowIndex>
+          <ParameterName>RCarsYear_RCarsSalesLineCaption</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>14</RowIndex>
+          <ParameterName>RCarsWasCrash_RCarsSalesLineCaption</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>15</RowIndex>
+          <ParameterName>StartDate_RCarsSalesLineCaption</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>16</RowIndex>
+          <ParameterName>EndDate_RCarsSalesLineCaption</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>17</RowIndex>
           <ParameterName>ServiceDay_RCarsSalesLineCaption</ParameterName>
         </CellDefinition>
       </CellDefinitions>

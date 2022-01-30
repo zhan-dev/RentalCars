@@ -158,7 +158,7 @@ table 50103 "RCars Sales Line"
         {
             Caption = 'Line No.';
             DataClassification = CustomerContent;
-            Editable = false; //при Enabled (краш в проэкте)
+            Editable = false;
         }
     }
     keys
