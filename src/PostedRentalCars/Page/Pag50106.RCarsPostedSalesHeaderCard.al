@@ -1,10 +1,10 @@
-page 50104 "RCars Sales Header Card"
+page 50106 "RCars Posted Sales Header Card"
 {
 
-    Caption = 'Sales Header';
+    Caption = 'Posted Sales Header';
     PageType = Card;
-    SourceTable = "RCars Sales Header";
-    PromotedActionCategories = 'New,Process,Report,Approve,Release,Posting,Prepare,Order,Request Approval,History,Print/Send,Navigate';
+    SourceTable = "RCars Posted Sales Header";
+    DeleteAllowed = false;
 
     layout
     {
@@ -12,6 +12,7 @@ page 50104 "RCars Sales Header Card"
         {
             group(General)
             {
+                Editable = false;
                 field("Doc. No."; Rec."Doc. No.")
                 {
                     ToolTip = 'Specifies the value of the Doc. No. field.';
@@ -60,40 +61,14 @@ page 50104 "RCars Sales Header Card"
 
             }
             //Связь под ListPart
-            part(SalesLines; "RCars Sales Line")
+            part(PostedSalesLines; "RCars Posted Sales Line")
             {
                 ApplicationArea = All;
                 SubPageLink = "Line Doc No." = field("Doc. No."); //привязка к ключу
                 UpdatePropagation = Both; //обновление форм
+                Editable = false;
             }
         }
     }
-    actions
-    {
-        area(Processing)
-        {
-            action(Post)
-            {
-                ApplicationArea = Basic, Suite;
-                Caption = 'P&ost';
-                Ellipsis = true;
-                Image = PostOrder;
-                Promoted = true;
-                PromotedCategory = Category6;
-                PromotedIsBig = true;
-                ShortCutKey = 'F9';
-                ToolTip = 'Finalize the document or journal by posting the amounts and quantities to the related accounts in your company books.';
 
-                AboutTitle = 'Posting the order';
-                AboutText = 'Posting will post the quantities on the order.';
-
-                trigger OnAction()
-                var
-                    RCarsPostedSalesHeader: Codeunit "RCars Posted Sales Header";
-                begin
-                    RCarsPostedSalesHeader.RCarsPosted(Rec);
-                end;
-            }
-        }
-    }
 }

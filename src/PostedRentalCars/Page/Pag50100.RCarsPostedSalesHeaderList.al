@@ -1,16 +1,21 @@
-page 50104 "RCars Sales Header Card"
+page 50100 "RCars Posted Sales Header List"
 {
 
-    Caption = 'Sales Header';
-    PageType = Card;
-    SourceTable = "RCars Sales Header";
-    PromotedActionCategories = 'New,Process,Report,Approve,Release,Posting,Prepare,Order,Request Approval,History,Print/Send,Navigate';
+    ApplicationArea = All; //видимость области
+    Caption = 'Posted Sales Header';
+    PageType = List;
+    SourceTable = "RCars Posted Sales Header";
+    UsageCategory = Lists;
+
+    CardPageId = "RCars Posted Sales Header Card"; //ссылка  на карточку 
+    Editable = false; // запрет редактирования листа на главной
+    DeleteAllowed = false;
 
     layout
     {
         area(content)
         {
-            group(General)
+            repeater(General)
             {
                 field("Doc. No."; Rec."Doc. No.")
                 {
@@ -57,42 +62,23 @@ page 50104 "RCars Sales Header Card"
                     ToolTip = 'Specifies the value of the Order Date field.';
                     ApplicationArea = All;
                 }
-
-            }
-            //Связь под ListPart
-            part(SalesLines; "RCars Sales Line")
-            {
-                ApplicationArea = All;
-                SubPageLink = "Line Doc No." = field("Doc. No."); //привязка к ключу
-                UpdatePropagation = Both; //обновление форм
             }
         }
     }
     actions
     {
-        area(Processing)
+        area(reporting)
         {
-            action(Post)
+            action("RCars Sales Order")
             {
-                ApplicationArea = Basic, Suite;
-                Caption = 'P&ost';
-                Ellipsis = true;
-                Image = PostOrder;
+                // PromotedOnly = true; //приходь компилятора (не обязателен)
+                ApplicationArea = All;
+                Caption = 'RCars Sales Order';
+                Image = "Report";
                 Promoted = true;
-                PromotedCategory = Category6;
-                PromotedIsBig = true;
-                ShortCutKey = 'F9';
-                ToolTip = 'Finalize the document or journal by posting the amounts and quantities to the related accounts in your company books.';
-
-                AboutTitle = 'Posting the order';
-                AboutText = 'Posting will post the quantities on the order.';
-
-                trigger OnAction()
-                var
-                    RCarsPostedSalesHeader: Codeunit "RCars Posted Sales Header";
-                begin
-                    RCarsPostedSalesHeader.RCarsPosted(Rec);
-                end;
+                PromotedCategory = "Report";
+                RunObject = Report "RCars Sales Order";
+                ToolTip = 'View, print, or save an overview of availability of items for shipment on sales documents, filtered on shipment status.';
             }
         }
     }
