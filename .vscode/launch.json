@@ -6,7 +6,7 @@
       "request": "launch",
       "type": "al",
       "environmentType": "OnPrem",
-      "server": "http://MyProj",
+      "server": "http://ProjBC",
       "serverInstance": "BC",
       "authentication": "UserPassword",
       "startupObjectId": 50103,
